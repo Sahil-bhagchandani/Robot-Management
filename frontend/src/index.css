@@ -1,0 +1,546 @@
+html{
+  overflow: hidden;
+}
+.wrapper {
+  --input-focus: #0f1010;
+  --font-color: #323232;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #323232;
+   justify-content: center;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  overflow: hidden;
+  /* height: 100vh; */
+}
+.bg-img {
+  background-image: url('./assets/bg.jpg'); /* Replace with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* To position the background image behind other elements */
+}
+/* The switch - the box around the slider */
+.switch {
+  /* Variables */
+  --switch_width: 2em;
+  --switch_height: 1em;
+  --thumb_color: #e8e8e8;
+  --track_color: #e8e8e8;
+  --track_active_color: #888;
+  --outline_color: #000;
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: var(--switch_width);
+  height: var(--switch_height);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+span{
+  --font-color: white;
+}
+
+/* The slider */
+.circle {
+  box-sizing: border-box;
+  border: 2px solid var(--outline_color);
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--track_color);
+  transition: 0.15s;
+  border-radius: var(--switch_height);
+}
+
+.circle:before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  height: var(--switch_height);
+  width: var(--switch_height);
+  border: 2px solid var(--outline_color);
+  border-radius: 100%;
+  left: -2px;
+  bottom: -2px;
+  background-color: var(--thumb_color);
+  transform: translateY(-0.2em);
+  box-shadow: 0 0.2em 0 var(--outline_color);
+  transition: 0.15s;
+}
+
+input:checked + .circle {
+  background-color: var(--track_active_color);
+}
+
+input:focus-visible + .circle {
+  box-shadow: 0 0 0 2px var(--track_active_color);
+}
+
+/* Raise thumb when hovered */
+input:hover + .circle:before {
+  transform: translateY(-0.3em);
+  box-shadow: 0 0.3em 0 var(--outline_color);
+}
+
+input:checked + .circle:before {
+  transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.2em);
+}
+
+/* Raise thumb when hovered & checked */
+input:hover:checked + .circle:before {
+  transform: translateX(calc(var(--switch_width) - var(--switch_height))) translateY(-0.3em);
+  box-shadow: 0 0.3em 0 var(--outline_color);
+}
+
+.switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+.mode-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 10px;
+  color: var(--bg-color);
+}
+
+
+
+
+
+.card-container {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  margin-top: 0px;
+  
+}
+
+
+.boxL,
+.boxS {
+  padding: 20px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: lightgrey;
+  gap: 20px;
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  margin: 0 10px;
+}
+
+.title {
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: center;
+  color: var(--main-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.inputfield {
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+.inputfield::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+.inputfield:focus {
+  border: 2px solid var(--input-focus);
+}
+
+.buttonfield:active,
+.button-confirm:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
+
+.buttonfield {
+  margin: 30px 0px 50px 25%;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .boxL,
+  .boxS {
+    max-width: 300px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* Dashboard */
+.bg {
+  background-image: url('./assets/bg.jpg'); /* Replace with the actual path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* To position the background image behind other elements */
+}
+.Dashboard{
+  color: #262424;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.card {
+  background-color: rgb(214, 210, 210);
+  display:flex;
+  flex-direction: row;
+  max-width: 700px;
+  height: 70vh;
+  padding:10px;
+  border: px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  box-shadow: 8px 8px hsla(0, 2%, 22%, 0.922);
+  margin: auto;
+  margin-top: 70px;
+
+
+}
+
+
+.info{
+  padding: 20px;
+  padding-right: 20px;
+}
+.label{
+ 
+  font-size: 27px;
+  font-weight: 900;
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+
+}
+textarea {
+  /* margin-top: 20px; */
+  margin-bottom: 10px;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: none;
+  box-shadow: 6px 5px rgb(23, 23, 30);
+}
+.filters{
+  margin-top: 15px;
+  display: block;
+}
+/* Style the select dropdown */
+select {
+  font-weight: bold;
+  color: #323232;
+  margin-left: 20px;
+  margin-top: 20px;
+  max-width: 150px;
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 5px 5px  rgba(13, 9, 9, 0.861); /* Remove the default focus outline */
+}
+
+/* Style the dropdown options */
+option {
+  font-size: 14px;
+}
+
+/* Style the dropdown when it's focused */
+.refresh{
+  font-weight: bold;
+  color: #323232;
+  width: fit-content;
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background-color: #efecec;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 4px 3px  rgba(1, 0, 0, 0.836);
+  margin-top: 15px;
+}
+
+.refresh:active{
+  box-shadow: none;
+  border: 2px solid black;
+  transform: translate(3px, 3px);
+}
+
+.submit{
+  font-weight: bold;
+  color: #323232;
+  width: fit-content;
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background-color: #efecec;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 4px 3px  rgba(1, 0, 0, 0.836);
+  margin-top: 15px;
+}
+
+.submit:active{
+  box-shadow: none;
+  border: 2px solid black;
+  transform: translate(3px, 3px);
+}
+
+
+
+/* Style the thumb on hover */
+
+.slider {
+  -webkit-appearance: none;
+  width:100px;
+  height: 10px;
+  border-radius: 5px;
+  background: #6e6969;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  margin-top: 30px;
+  margin-left: 10px;
+  
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #111212;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.16);
+  transition: 0.3s ease-in-out;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #161817;
+  cursor: pointer;
+}
+
+.slidercont1{
+  display: flex;
+}
+.slidercont2{
+  display: flex;
+}
+
+
+.PB-range-slidervalue1 {
+  font-weight: 600;
+  border:2px solid #000000;
+  width:60px;
+  border-radius:6px;
+  padding: 10px;
+  box-shadow: 5px 5px;
+  background-color:white
+}
+.PB-range-slidervalue2 {
+  font-weight: 600;
+  border:2px solid #000000;
+  width:40px;
+  border-radius:6px;
+  padding: 10px;
+  box-shadow: 5px 5px;
+  background-color:white
+}
+.historic-data {
+  padding: 18px;
+  padding-right: 40px;
+
+
+}
+.filtered-data{
+  height: 400px;
+}
+
+
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(63, 61, 61, 0.199);
+  background-color: rgb(201, 201, 201);
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: rgb(0, 0, 0);
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: rgb(0, 0, 0);
+  font-size: 1.2em;
+  font-weight: 700;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 5px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+@media (max-width: 768px) {
+  .card { /* Change to column layout on smaller screens */
+    height: fit-content; /* Allow card height to adjust based on content */
+    max-width: 100%; /* Adjust maximum width for smaller screens */
+  }
+ 
+
+  .info {
+    padding: 20px 0; /* Adjust padding for smaller screens */
+  }
+
+  .label {
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .refresh{
+    margin-top: 5px;
+  }
+  textarea {
+    height: 100px; /* Adjust textarea height for smaller screens */
+  }
+
+  .filters {
+    margin-top: 10px;
+ /* Change to flex layout for smaller screens */
+    flex-wrap: wrap; /* Allow filters to wrap on smaller screens */
+    justify-content: space-between; /* Distribute filters evenly on smaller screens */
+    align-items: center; /* Align filters vertically */
+  }
+  .historic-data{
+    margin-left: 20px;
+  }
+  select{
+    margin-left: 0;
+  }
+  /* Add more specific styles or adjustments for smaller screens as needed */
+}
+
+
+
+
+
+
+
+
+
+
+/* Add more specific styles for each component as needed */
